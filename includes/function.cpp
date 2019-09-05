@@ -51,23 +51,23 @@ void pre(string task, fstream &file1, fstream &file2)
 
 void copyNav(string str)
 {
-    fstream file2,file1("new.html",ios::app);
+	fstream file2, file1("new.html", ios::app);
 	string s1;
-	int flag =0;
+	int flag = 0;
 	file2.open("nav.html");
-    while(true)
+	while (true)
 	{
 		file1.clear();
 		file1.sync();
-		getline(file2,s1);
-		if(s1.find(str) != string::npos)
+		getline(file2, s1);
+		if (s1.find(str) != string::npos)
 		{
-           flag =1;
+			flag = 1;
 		}
-		if(flag)
+		if (flag)
 		{
 			file1 << s1;
-			if(s1.find("/nav") != string::npos)
+			if (s1.find("/nav") != string::npos)
 			{
 				break;
 			}
@@ -76,80 +76,86 @@ void copyNav(string str)
 	file1.close();
 	file2.close();
 }
-void copyheaderDiv(string str){
-		fstream file2,file1("new.html",ios::app);
+void copyheaderDiv(string str)
+{
+	fstream file2, file1("new.html", ios::app);
 	string s1;
-	int flag =0;
+	int flag = 0, divCount = 0;
 	file2.open("header.html");
-    while(true)
+	while (true)
 	{
 		file1.clear();
 		file1.sync();
-		getline(file2,s1);
-		if(s1.find(str) != string::npos && s1.find("header"))
+		getline(file2, s1);
+		if (s1.find(str) != string::npos)
 		{
-           flag =1;
+			flag = 1;
 		}
-	// this function is not complted yet
-
-		if(flag)
+		if (flag)
 		{
+			if (s1.find("<div") != string::npos)
+				divCount++;
+
+			if (s1.find("</div") != string::npos)
+				divCount--;
+
 			file1 << s1;
-			if(s1.find("/header") != string::npos)
+			if (divCount)
 			{
 				break;
 			}
 		}
 	}
-		file1.close();
+	file1.close();
 	file2.close();
 }
-void copyHeader(string str){
-	fstream file2,file1("new.html",ios::app);
+void copyHeader(string str)
+{
+	fstream file2, file1("new.html", ios::app);
 	string s1;
-	int flag =0;
+	int flag = 0;
 	file2.open("header.html");
-    while(true)
+	while (true)
 	{
 		file1.clear();
 		file1.sync();
-		getline(file2,s1);
-		if(s1.find(str) != string::npos && s1.find("header"))
+		getline(file2, s1);
+		if (s1.find(str) != string::npos && s1.find("header"))
 		{
-           flag =1;
-		   cout<<"header found";
+			flag = 1;
+			cout << "header found";
 		}
-		else{
-			cout<< "hedaer not found";
-				file1.close();
-	file2.close();
-	copyHeaderDiv(str);
+		if (s1.find(str) != string::npos && s1.find("div"))
+		{
+			cout << "hedaer not found";
+			file1.close();
+			file2.close();
+			copyheaderDiv(str);
 			break;
 		}
-		if(flag)
+		if (flag)
 		{
 			file1 << s1;
-			if(s1.find("/header") != string::npos)
+			if (s1.find("/header") != string::npos)
 			{
 				break;
 			}
 		}
 	}
-		file1.close();
+	file1.close();
 	file2.close();
 }
-void appendCode(int sub_code,int data_code,char argv[])
+void appendCode(int sub_code, int data_code, char argv[])
 {
-   fstream file1;
-   file1.open("new.html",ios::app);
-   
-	   string str = to_string(data_code) + to_string(sub_code);
-   switch(data_code)
-   {
-	   case 1:
-	   copyNav(str);
-	   case 2:
-	   copyHeader(str);
-	   
-   }
+	fstream file1;
+	file1.open("new.html", ios::app);
+
+	string str = to_string(data_code) + to_string(sub_code);
+	switch (data_code)
+	{
+	case 1:
+		copyNav(str);
+	case 2:
+		copyHeader(str);
+	}
 }
