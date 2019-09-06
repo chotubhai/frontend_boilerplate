@@ -1,0 +1,132 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+/* lacasa(11) starts */
+nav.lacasa {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(37, 20, 99, 0.644);
+}
+nav.lacasa .logo {
+  flex: 2;
+  font-size: 28px;
+  color: rgb(58, 56, 56);
+  margin: 0 calc(20px + 10vmax);
+}
+nav.lacasa .menu {
+  flex: 7;
+}
+nav.lacasa .menu ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  list-style-type: none;
+}
+/* .menu ul li {
+	display: inline;
+} */
+nav.lacasa .menu ul li a {
+  padding: 1vw;
+  text-decoration: none;
+  color: rgb(10, 10, 10);
+}
+nav.lacasa .menu ul li a.login {
+  padding: 18px 25px;
+  border: 3px solid white;
+}
+/* lacasa(11) ends */
+
+/* capture start */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+nav.capture {
+  background-color: rgb(13, 150, 13);
+  display: flex;
+  height: 86px;
+  justify-content: center;
+  align-items: center;
+}
+nav.capture .logo,
+.social {
+  flex: 1;
+  text-align: center;
+}
+nav.capture .menu {
+  flex: 3;
+}
+nav.capture .menu ul {
+  display: flex;
+  justify-content: center;
+}
+nav.capture .social ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+nav.capture .menu ul li {
+  padding: 010px;
+}
+nav.capture .menu ul,
+nav.capture .social ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+nav.capture .social > * {
+  margin: 5px;
+}
+/* 
+capture ends */
+/* sublime starts */
+header.sublime {
+  height: 100%;
+  position: absolute;
+  background: url("./img/billboard.jpg") no-repeat bottom;
+  width: 100%;
+  flex-direction: column;
+  background-size: cover;
+}
+nav.sublime {
+  background-color: transparent;
+  display: flex;
+  height: 86px;
+  justify-content: center;
+  align-items: center;
+}
+nav.sublime .logo {
+  flex: 2;
+  text-align: center;
+}
+nav.sublime .menu {
+  flex: 5;
+  text-align: center;
+}
+nav.sublime ul {
+  list-style-type: none;
+  margin-left: 163px;
+}
+nav.sublime ul li {
+  margin: 0 10px;
+  display: inline;
+}
+nav.sublime ul li a {
+  text-decoration: none;
+  color: white;
+}
+/* sublime ends */
+
+@media screen and (min-width: 640px) {
+}

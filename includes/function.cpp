@@ -78,14 +78,14 @@ void copyNav(string str)
 }
 void copyheaderDiv(string str)
 {
+	int flag=0,divcount = 0;
 	fstream file2, file1("new.html", ios::app);
 	string s1;
-	int flag = 0, divCount = 0;
 	file2.open("header.html");
 	while (true)
 	{
-		file1.clear();
-		file1.sync();
+		file2.clear();
+		file2.sync();
 		getline(file2, s1);
 		if (s1.find(str) != string::npos)
 		{
@@ -93,14 +93,16 @@ void copyheaderDiv(string str)
 		}
 		if (flag)
 		{
-			if (s1.find("<div") != string::npos)
-				divCount++;
-
-			if (s1.find("</div") != string::npos)
-				divCount--;
-
 			file1 << s1;
-			if (divCount)
+			if (s1.find("<div") != string::npos)
+			{
+			   divcount++;
+			}
+			if (s1.find("/div") != string::npos)
+			{
+				divcount--;
+			}
+			if(divcount == 0)
 			{
 				break;
 			}
@@ -111,16 +113,17 @@ void copyheaderDiv(string str)
 }
 void copyHeader(string str)
 {
+	cout<<"header is running"<<str<<endl;
 	fstream file2, file1("new.html", ios::app);
 	string s1;
 	int flag = 0;
 	file2.open("header.html");
 	while (true)
 	{
-		file1.clear();
-		file1.sync();
+		file2.clear();
+		file2.sync();
 		getline(file2, s1);
-		if (s1.find(str) != string::npos && s1.find("header"))
+		if (s1.find(str) != string::npos)
 		{
 			flag = 1;
 			cout << "header found";
@@ -145,17 +148,16 @@ void copyHeader(string str)
 	file1.close();
 	file2.close();
 }
-void appendCode(int sub_code, int data_code, char argv[])
+void appendHtmlCode(int sub_code, int data_code)
 {
-	fstream file1;
-	file1.open("new.html", ios::app);
-
 	string str = to_string(data_code) + to_string(sub_code);
 	switch (data_code)
 	{
 	case 1:
 		copyNav(str);
+		break;
 	case 2:
 		copyHeader(str);
+		break;
 	}
 }
