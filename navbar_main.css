@@ -12,6 +12,7 @@ nav.lacasa {
   height: 90px;
   display: flex;
   justify-content: center;
+  height: 90px;
   align-items: center;
   background: rgba(37, 20, 99, 0.644);
 }
