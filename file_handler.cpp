@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
-#include <windows.h>
+
 using namespace std;
 #include "includes/headers/function.h"
 #include "includes/headers/cssFunction.h"

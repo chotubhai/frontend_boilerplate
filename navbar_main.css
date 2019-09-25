@@ -9,51 +9,33 @@ html {
 /* lacasa(11) starts */
 nav.lacasa {
   width: 100%;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  height: 90px;
-  align-items: center;
+  height: auto;
   background: rgba(37, 20, 99, 0.644);
 }
-nav.lacasa .logo {
-  flex: 2;
-  font-size: 28px;
-  color: rgb(58, 56, 56);
-  margin: 0 calc(20px + 10vmax);
+nav.lacasa ul {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
 }
-nav.lacasa .menu {
-  flex: 7;
+nav.lacasa ul >* {
+    flex: 1;
+    padding: 30px 0px;
 }
-nav.lacasa .menu ul {
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  list-style-type: none;
+nav.lacasa ul li.logo {
+    flex: 3;
 }
-/* .menu ul li {
-	display: inline;
-} */
-nav.lacasa .menu ul li a {
-  padding: 1vw;
-  text-decoration: none;
-  color: rgb(10, 10, 10);
+nav.lacasa ul a {
+    color: white;
+    text-decoration: none;
 }
-nav.lacasa .menu ul li a.login {
-  padding: 18px 25px;
-  border: 3px solid white;
+nav.lacasa ul li.trigram {
+   display: none;
 }
 /* lacasa(11) ends */
 
-/* capture start */
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 0;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
+/* capture(12) start */
+
 nav.capture {
   background-color: rgb(13, 150, 13);
   display: flex;
@@ -90,8 +72,8 @@ nav.capture .social > * {
   margin: 5px;
 }
 /* 
-capture ends */
-/* sublime starts */
+capture(12) ends */
+/* sublime(13) starts */
 header.sublime {
   height: 100%;
   position: absolute;
@@ -127,7 +109,21 @@ nav.sublime ul li a {
   text-decoration: none;
   color: white;
 }
-/* sublime ends */
+/* sublime(13) ends */
 
-@media screen and (min-width: 640px) {
+@media screen and (max-width: 640px) {
+  /* lacasa(11) starts */
+  nav.lacasa ul li.trigram {
+    position: absolute;
+    top: 0;
+    right: 4%;
+    display: block;
+}
+nav.lacasa ul {
+  flex-direction: column;
+}
+nav.lacasa ul li.menu {
+    display: none;
+}
+/* lacasa(11) ends */
 }
