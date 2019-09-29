@@ -2,24 +2,17 @@ void pre(string task, fstream &file1, fstream &file2)
 {
 	if (task == "start")
 	{
-		file1.open("start.html");
+
 		if (file1.is_open())
 		{
-			file1.seekg(0, ios::beg);
-			long int init = file1.tellg();
-			file1.seekg(0, ios::end);
-			long int end = file1.tellg();
-			file1.seekg(0, ios::beg);
-			long int size = end - init;
-			char data[size];
 			string data1;
-			file2.open("new.html", ios::out);
+
 			while (!file1.eof())
 			{
 				file1.clear();
 				file1.sync();
 				getline(file1, data1);
-				file2 << data1 + ' ';
+				file2 << data1 + '\n';
 			}
 			file1.close();
 			file2.close();
@@ -27,22 +20,15 @@ void pre(string task, fstream &file1, fstream &file2)
 	}
 	else
 	{
-		file1.open("end.html");
-		file1.seekg(0, ios::beg);
-		long int init = file1.tellg();
-		file1.seekg(0, ios::end);
-		long int end = file1.tellg();
-		file1.seekg(0, ios::beg);
-		long int size = end - init;
-		char data[size];
 		string data1;
+		file2.close();
 		file2.open("new.html", ios::app);
 		while (!file1.eof())
 		{
 			file1.clear();
 			file1.sync();
 			getline(file1, data1);
-			file2 << data1 + ' ';
+			file2 << data1 + '\n';
 		}
 		file1.close();
 		file2.close();
@@ -78,7 +64,7 @@ void copyNav(string str)
 }
 void copyheaderDiv(string str)
 {
-	int flag=0,divcount = 0;
+	int flag = 0, divcount = 0;
 	fstream file2, file1("new.html", ios::app);
 	string s1;
 	file2.open("header.html");
@@ -96,13 +82,13 @@ void copyheaderDiv(string str)
 			file1 << s1;
 			if (s1.find("<div") != string::npos)
 			{
-			   divcount++;
+				divcount++;
 			}
 			if (s1.find("/div") != string::npos)
 			{
 				divcount--;
 			}
-			if(divcount == 0)
+			if (divcount == 0)
 			{
 				break;
 			}
@@ -113,7 +99,7 @@ void copyheaderDiv(string str)
 }
 void copyHeader(string str)
 {
-	cout<<"header is running"<<str<<endl;
+	cout << "header is running" << str << endl;
 	fstream file2, file1("new.html", ios::app);
 	string s1;
 	int flag = 0;
@@ -140,6 +126,44 @@ void copyHeader(string str)
 		{
 			file1 << s1;
 			if (s1.find("/header") != string::npos)
+			{
+				break;
+			}
+		}
+	}
+	file1.close();
+	file2.close();
+}
+void copyContent {
+	int flag=0,divcount = 0;
+	string str = "21";
+	fstream file2, file1("new.html", ios::app);
+	string s1;
+	file2.open("header.html");
+	while (true)
+	{
+		file2.clear();
+		file2.sync();
+		getline(file2, s1);
+		if (s1.find(str) != string::npos)
+		{
+			flag = 1;
+			regex r("\<[A-Za-z]+\s");
+			smatch m;
+			
+		}
+		if (flag)
+		{
+			file1 << s1;
+			if (s1.find("<div") != string::npos)
+			{
+			   divcount++;
+			}
+			if (s1.find("/div") != string::npos)
+			{
+				divcount--;
+			}
+			if(divcount == 0)
 			{
 				break;
 			}
